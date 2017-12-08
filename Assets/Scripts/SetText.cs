@@ -13,29 +13,16 @@ public class SetText : MonoBehaviour {
     private GameManager gm;
     private playerController pc;
 
-	// Use this for initialization
-	void Start () {
-        try {
-            if (GameObject.FindGameObjectWithTag("GameController")) {
-                gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-                pc = gm.player.GetComponent<playerController>();
-            }
-        }
-        catch (Exception e) {
-
-        }
-        finally {
-            text = GetComponent<Text>();
-        }
-        
-	}
+    // Use this for initialization
+    void Start() {
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        pc = gm.player.GetComponent<playerController>();
+        text = GetComponent<Text>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		switch (textToSet) {
-            case "StageSelect":
-                text.text = Statics.stageNumber.ToString();
-                break;
             case "Stage":
                 text.text = SceneManager.GetActiveScene().name;
                 break;
