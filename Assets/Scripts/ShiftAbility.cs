@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShiftAbility : MonoBehaviour {
 
+	public playerController.Abilities currSelAbility;
+
 	private playerController.Abilities tempAbility;
     private TextMesh text;
     private playerController pc;
@@ -42,6 +44,7 @@ public class ShiftAbility : MonoBehaviour {
 			pc.currAbility = tempAbility;
 			exitSelection ();
 		}
+		currSelAbility = pc.currAbility;
         Vector3 scaleTmp = transform.localScale;
         scaleTmp.x /= parentTransform.lossyScale.x;
         transform.localScale = scaleTmp;
