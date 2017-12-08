@@ -8,12 +8,12 @@ public class playerController : MonoBehaviour {
 	public float jump = 250;
 	public float superJump = 800;
 
-	private enum Abilities {superJump, shrink, wallBreak, ghostWalk};
+	public enum Abilities {superJump, shrink, wallBreak, ghostWalk};
 
 	private Rigidbody2D rb2d;
 	private Vector3 direction;
 
-	private Abilities currAbility;
+	public Abilities currAbility;
 
 	private bool onGround = false;
 	private bool isShrunk = false;
