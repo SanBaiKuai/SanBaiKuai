@@ -88,7 +88,9 @@ public class playerController : MonoBehaviour {
 					gm.displayMessage ("Ability on cooldown");
 				} else {
 					executeAbility ();
-					StartCoroutine (CoolDown ());
+					if (!isTeleport) {
+						StartCoroutine (CoolDown ());
+					}
 				}
 			}
 
