@@ -25,12 +25,20 @@ public class playerController : MonoBehaviour {
 
 	public Abilities currAbility;
 
+	private int coolDown = 5;
+
 	private bool onGround = false;
 	private bool isShrunk = false;
 	private bool canBreak = false;
 	private bool isGhost = false; 
 	private bool isTeleport = false;
 	private bool onCoolDown = false;
+
+	private bool ghostOnCoolDown = false;
+	private bool jumpOnCoolDown = false;
+	private bool teleportOnCoolDown = false;
+	private bool shrinkOnCoolDown = false;
+	private bool wallBreakOnCoolDown = false;
 
 	private GameObject wallToBeak;
 	private GameObject newTeleportLocation;
@@ -98,7 +106,7 @@ public class playerController : MonoBehaviour {
 				if ((gm.numShiftsLeft > 0) && !onCoolDown) {
 					enterSelection ();
 				} else if (gm.numShiftsLeft <= 0) {
-					gm.displayMessage ("You do not have enough shifts left to change your abilities.");
+					gm.displayMessage ("You do not have enough shifts left to swap abilities.");
 				} else {
 					gm.displayMessage ("Ability cannot be swapped while on cooldown");
 				}
@@ -229,6 +237,46 @@ public class playerController : MonoBehaviour {
 		onCoolDown = true;
 		yield return new WaitForSeconds(5f);
 		onCoolDown = false;
+	}
+
+	IEnumerator jumpCoolDown() {
+		jumpOnCoolDown = true;
+		int timeLeft = coolDown;
+		while (timeLeft > 0) {
+			yield return new WaitForSeconds(1f);
+			timeLeft--;
+		}
+		jumpOnCoolDown = false;
+	}
+
+	IEnumerator teleportCoolDown() {
+		teleportOnCoolDown = true;
+		int timeLeft = coolDown;
+		while (timeLeft > 0) {
+			yield return new WaitForSeconds(1f);
+			timeLeft--;
+		}
+		teleportOnCoolDown = false;
+	}
+
+	IEnumerator wallBreakCoolDown() {
+		wallBreakOnCoolDown = true;
+		int timeLeft = coolDown;
+		while (timeLeft > 0) {
+			yield return new WaitForSeconds(1f);
+			timeLeft--;
+		}
+		wallBreakOnCoolDown = false;
+	}
+
+	IEnumerator ghostCoolDown() {
+		ghostOnCoolDown = true;
+		int timeLeft = coolDown;
+		while (timeLeft > 0) {
+			yield return new WaitForSeconds(1f);
+			timeLeft--;
+		}
+		ghostOnCoolDown = false;
 	}
 
 	IEnumerator GhostMode() {
