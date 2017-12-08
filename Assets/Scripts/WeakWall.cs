@@ -28,7 +28,7 @@ public class WeakWall : MonoBehaviour {
 
     IEnumerator Break() {
         anim.SetTrigger("Break");
-        yield return new WaitForSeconds(2f);
-        Destroy(this);
+        yield return new WaitForSeconds(0.5f);
+        Destroy(this.gameObject);
     }
 }
