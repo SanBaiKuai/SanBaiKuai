@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour {
 
+	public int ghostDuration = 5;
+
 	public float speed = 100;
 	public float jump = 250;
 	public float superJump = 800;
@@ -36,6 +38,7 @@ public class playerController : MonoBehaviour {
 	private GameObject wallToBeak;
 	private GameObject newTeleportLocation;
 	private GameObject selector;
+	private abilityDisplayController abilityDisplay;
 
 	private GameManager gm;
 	Animator anim;
@@ -46,6 +49,7 @@ public class playerController : MonoBehaviour {
 		//currAbility = Abilities.teleport;
 		anim = GetComponent<Animator>();
 		gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+		abilityDisplay = gm.canvas.GetComponentInChildren<abilityDisplayController> ();
 	}
 	
 	// Update is called once per frame
@@ -90,9 +94,6 @@ public class playerController : MonoBehaviour {
 					gm.displayMessage ("Ability on cooldown");
 				} else {
 					executeAbility ();
-					if (!isTeleport && !isShrunk && !isGhost) {
-						StartCoroutine (CoolDown ());
-					}
 				}
 			}
 
@@ -140,12 +141,15 @@ public class playerController : MonoBehaviour {
 			if (onGround) {
 				velo.y = superJump * Time.deltaTime;
 				rb2d.velocity = velo;
+				StartCoroutine (CoolDown ());
 			}
 		} else if (currAbility == Abilities.shrink) {
 			if (!isShrunk) {
+				abilityDisplay.setActive ();
 				this.gameObject.transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
 			} else {
 				this.gameObject.transform.localScale = new Vector3 (1f, 1f, 1f);
+				StartCoroutine (CoolDown ());
 			}
 			isShrunk = !isShrunk;
 		} else if (currAbility == Abilities.wallBreak) {
@@ -169,6 +173,7 @@ public class playerController : MonoBehaviour {
 			} else {
 				GameObject.Destroy (newTeleportLocation);
 				this.transform.position = teleportPoint.transform.position;
+				StartCoroutine (CoolDown ());
 			}
 			isTeleport = !isTeleport;
 		}
@@ -239,12 +244,14 @@ public class playerController : MonoBehaviour {
 
 	IEnumerator CoolDown() {
 		onCoolDown = true;
+		abilityDisplay.waitCountDown (2);
 		yield return new WaitForSeconds(2f);
 		onCoolDown = false;
 	}
 		
 
 	IEnumerator GhostMode() {
+		abilityDisplay.activeCountDown (5);
 		Color color = this.gameObject.GetComponent<Renderer> ().material.color;
 		isGhost = true;
 		Collider2D[] colliders;
@@ -276,6 +283,8 @@ public class playerController : MonoBehaviour {
 		//cooldown
 		//yield return new WaitForSeconds (3f);
 		isGhost = false;
+		abilityDisplay.setInactive ();
+		yield return new WaitForSeconds(0.1f);
 		StartCoroutine (CoolDown ());
 	}
 }
