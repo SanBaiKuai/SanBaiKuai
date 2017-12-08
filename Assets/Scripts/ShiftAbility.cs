@@ -24,32 +24,34 @@ public class ShiftAbility : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        text.text = pc.currAbility.ToString();
+        text.text = tempAbility.ToString();
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
-            if (pc.currAbility <= 0) {
-                pc.currAbility = (playerController.Abilities)(numAbilities - 1);
+			if (tempAbility <= 0) {
+				tempAbility = (playerController.Abilities)(numAbilities - 1);
             }
             else {
-                pc.currAbility = (playerController.Abilities)(((int)pc.currAbility - 1));
+				tempAbility = (playerController.Abilities)(((int)tempAbility - 1));
             }
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
-            pc.currAbility = (playerController.Abilities)(((int)pc.currAbility + 1) % numAbilities);
+			tempAbility = (playerController.Abilities)(((int)tempAbility + 1) % numAbilities);
         }
 
 		if (Input.GetKeyDown (KeyCode.LeftShift)) {
 			if (pc.currAbility != tempAbility) {
 				gm.numShiftsLeft--;
 			}
+			pc.currAbility = tempAbility;
 			exitSelection ();
 			
 		}
 
 		if (Input.GetKeyDown (KeyCode.Escape)) {
-			pc.currAbility = tempAbility;
+			//pc.currAbility = tempAbility;
 			exitSelection ();
 		}
-		currSelAbility = pc.currAbility;
+		//currSelAbility = pc.currAbility;
+		currSelAbility = tempAbility;
         Vector3 scaleTmp = transform.localScale;
         scaleTmp.x /= parentTransform.lossyScale.x;
         transform.localScale = scaleTmp;
