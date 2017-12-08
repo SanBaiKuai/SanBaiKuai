@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShiftAbility : MonoBehaviour {
 
+	private playerController.Abilities tempAbility;
     private TextMesh text;
     private playerController pc;
     private Transform parentTransform;
@@ -14,6 +15,7 @@ public class ShiftAbility : MonoBehaviour {
         text = GetComponent<TextMesh>();
         pc = GetComponentInParent<playerController>();
         parentTransform = GetComponentInParent<Transform>();
+		tempAbility = pc.currAbility;
 	}
 	
 	// Update is called once per frame
@@ -31,8 +33,21 @@ public class ShiftAbility : MonoBehaviour {
             pc.currAbility = (playerController.Abilities)(((int)pc.currAbility + 1) % numAbilities);
         }
 
+		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+			exitSelection ();
+			
+		}
+
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			pc.currAbility = tempAbility;
+			exitSelection ();
+		}
         Vector3 scaleTmp = transform.localScale;
         scaleTmp.x /= parentTransform.lossyScale.x;
         transform.localScale = scaleTmp;
     }
+
+	private void exitSelection() {
+		pc.exitSelection ();
+	}
 }

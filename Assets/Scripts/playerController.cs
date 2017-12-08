@@ -8,8 +8,13 @@ public class playerController : MonoBehaviour {
 	public float jump = 250;
 	public float superJump = 800;
 
+	public bool isSelecting = false;
+
 	public GameObject teleportPrefab;
+	public GameObject selectionPrefab;
+
 	public GameObject teleportPoint;
+	public GameObject selectionPoint;
 
 	public enum Abilities {superJump, shrink, wallBreak, ghostWalk, teleport};
 
@@ -26,6 +31,7 @@ public class playerController : MonoBehaviour {
 
 	private GameObject wallToBeak;
 	private GameObject newTeleportLocation;
+	private GameObject selector;
 	Animator anim;
 
 	// Use this for initialization
@@ -39,44 +45,70 @@ public class playerController : MonoBehaviour {
 	void Update () {
 		direction = this.transform.localScale;
 		Vector2 velo = rb2d.velocity;
-		//left-right movements
-		if (Input.GetKey(KeyCode.W))
-		{ if (onGround) {
-				velo.y = jump * Time.deltaTime;
+		if(!isSelecting) {
+			//left-right movements
+			if (Input.GetKey(KeyCode.W))
+			{ if (onGround) {
+					velo.y = jump * Time.deltaTime;
+					rb2d.velocity = velo;
+				}
+			}
+			if (Input.GetAxis("Horizontal") > 0)
+			{
+				velo.x = speed*Time.deltaTime;
 				rb2d.velocity = velo;
+				anim.SetBool("Walking", true);
+				direction.x = Mathf.Abs(direction.x);
+				this.transform.localScale = direction;
+
+			}
+
+			if (Input.GetAxis("Horizontal") < 0)
+			{
+				velo.x = -speed * Time.deltaTime;
+				rb2d.velocity = velo;
+				anim.SetBool("Walking", true);
+				direction.x = -Mathf.Abs(direction.x);
+				this.transform.localScale = direction;
+
+			}
+			if (Input.GetAxis("Horizontal") == 0)
+			{
+				anim.SetBool("Walking", false);
+			}
+				
+			if (Input.GetKeyDown (KeyCode.E)) {
+				executeAbility ();
+			}
+
+			if (Input.GetKeyDown (KeyCode.LeftShift)) {
+				enterSelection ();
+			}
+
+			if (Input.GetKeyDown (KeyCode.Escape)) {
+				clearAllActivities ();
 			}
 		}
-		if (Input.GetAxis("Horizontal") > 0)
-		{
-			velo.x = speed*Time.deltaTime;
-			rb2d.velocity = velo;
-			anim.SetBool("Walking", true);
-			direction.x = Mathf.Abs(direction.x);
-			this.transform.localScale = direction;
-
-		}
-
-		if (Input.GetAxis("Horizontal") < 0)
-		{
-			velo.x = -speed * Time.deltaTime;
-			rb2d.velocity = velo;
-			anim.SetBool("Walking", true);
-			direction.x = -Mathf.Abs(direction.x);
-			this.transform.localScale = direction;
-
-		}
-		if (Input.GetAxis("Horizontal") == 0)
-		{
-			anim.SetBool("Walking", false);
-		}
 			
-		if (Input.GetKeyDown (KeyCode.E)) {
-			executeAbility ();
-		}
+	}
 
-		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+	private void enterSelection() {
+		clearAllActivities ();
+		if (isShrunk || isGhost) {
+			return;
 		}
-		
+		isSelecting = true;
+		//create shift ability prefab
+		selector = Instantiate(selectionPrefab);
+		selector.transform.rotation = this.transform.rotation;
+		selector.transform.position = selectionPoint.transform.position;
+		//set this as parent of shift ability prefab
+		selector.transform.parent = this.transform;
+	}
+
+	public void exitSelection() {
+		isSelecting = false;
+		Destroy (selector);
 	}
 
 	private void executeAbility() {
@@ -114,6 +146,13 @@ public class playerController : MonoBehaviour {
 				this.transform.position = teleportPoint.transform.position;
 			}
 			isTeleport = !isTeleport;
+		}
+	}
+
+	private void clearAllActivities() {
+		if (isTeleport) {
+			GameObject.Destroy (newTeleportLocation);
+			isTeleport = false;
 		}
 	}
 
@@ -156,14 +195,19 @@ public class playerController : MonoBehaviour {
 	}
 
 	IEnumerator GhostMode() {
+		Color color = this.gameObject.GetComponent<Renderer> ().material.color;
 		isGhost = true;
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("KillOnContact");
 		foreach (GameObject enemy in enemies) {
 			enemy.GetComponent<Collider2D> ().enabled = false;
 		}
-		//this.gameObject.GetComponent<Renderer> ().material.color.a = 0.5f;
+		//make player half transparent
+		color.a = 0.5f;
+		this.gameObject.GetComponent<Renderer> ().material.color = color;
 		yield return new WaitForSeconds(5f);
-		//this.gameObject.GetComponent<Renderer> ().material.color.a = 1.0f;
+		//make player half opaque
+		color.a = 1.0f;
+		this.gameObject.GetComponent<Renderer> ().material.color = color;
 		foreach (GameObject enemy in enemies) {
 			enemy.GetComponent<Collider2D> ().enabled = true;
 		}		
