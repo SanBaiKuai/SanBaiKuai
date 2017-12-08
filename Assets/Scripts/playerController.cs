@@ -167,7 +167,7 @@ public class playerController : MonoBehaviour {
 			canBreak = true;
 			wallToBeak = other.gameObject;
 		}
-		if (other.gameObject.CompareTag ("KillOnContact")) {
+		if (other.gameObject.CompareTag ("KillOnContact") && !isGhost) {
 			anim.Play ("Player_Dying");
 			this.enabled = false;
 		}
@@ -198,9 +198,16 @@ public class playerController : MonoBehaviour {
 	IEnumerator GhostMode() {
 		Color color = this.gameObject.GetComponent<Renderer> ().material.color;
 		isGhost = true;
+		Collider2D[] colliders;
+		Collider2D[] myColliders = this.gameObject.GetComponents<Collider2D> ();
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("KillOnContact");
 		foreach (GameObject enemy in enemies) {
-			enemy.GetComponent<Collider2D> ().enabled = false;
+			colliders =enemy.GetComponents<Collider2D> ();
+			foreach (Collider2D collider in colliders) {
+				foreach (Collider2D myCollider in myColliders) {
+					Physics2D.IgnoreCollision (myCollider, collider, true);
+				}
+			}
 		}
 		//make player half transparent
 		color.a = 0.5f;
@@ -210,8 +217,13 @@ public class playerController : MonoBehaviour {
 		color.a = 1.0f;
 		this.gameObject.GetComponent<Renderer> ().material.color = color;
 		foreach (GameObject enemy in enemies) {
-			enemy.GetComponent<Collider2D> ().enabled = true;
-		}		
+			colliders =enemy.GetComponents<Collider2D> ();
+			foreach (Collider2D collider in colliders) {
+				foreach (Collider2D myCollider in myColliders) {
+					Physics2D.IgnoreCollision (myCollider, collider, false);
+				}
+			}
+		}
 		//cooldown
 		yield return new WaitForSeconds (3f);
 		isGhost = false;
