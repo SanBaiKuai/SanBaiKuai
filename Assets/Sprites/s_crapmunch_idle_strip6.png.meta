@@ -1,13 +1,15 @@
 fileFormatVersion: 2
-guid: 94c009716f824b548a34fe62c76f63fe
-timeCreated: 1512715109
+guid: 305f0c5320d2ecb42ad547161b634135
+timeCreated: 1512717088
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: s_sturgrimm_move_strip4_0
-    21300002: s_sturgrimm_move_strip4_1
-    21300004: s_sturgrimm_move_strip4_2
-    21300006: s_sturgrimm_move_strip4_3
+    21300000: s_crapmunch_idle_strip6_0
+    21300002: s_crapmunch_idle_strip6_1
+    21300004: s_crapmunch_idle_strip6_2
+    21300006: s_crapmunch_idle_strip6_3
+    21300008: s_crapmunch_idle_strip6_4
+    21300010: s_crapmunch_idle_strip6_5
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -44,7 +46,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -74,52 +76,78 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: s_sturgrimm_move_strip4_0
+      name: s_crapmunch_idle_strip6_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 20
-        height: 33
+        width: 98
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: s_sturgrimm_move_strip4_1
+      name: s_crapmunch_idle_strip6_1
       rect:
         serializedVersion: 2
-        x: 22
+        x: 99
         y: 0
-        width: 17
-        height: 32
+        width: 97
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: s_sturgrimm_move_strip4_2
+      name: s_crapmunch_idle_strip6_2
       rect:
         serializedVersion: 2
-        x: 42
+        x: 201
         y: 0
-        width: 16
-        height: 33
+        width: 93
+        height: 75
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: s_sturgrimm_move_strip4_3
+      name: s_crapmunch_idle_strip6_3
       rect:
         serializedVersion: 2
-        x: 61
+        x: 298
         y: 0
-        width: 17
-        height: 32
+        width: 94
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: s_crapmunch_idle_strip6_4
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 0
+        width: 94
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: s_crapmunch_idle_strip6_5
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 0
+        width: 97
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
