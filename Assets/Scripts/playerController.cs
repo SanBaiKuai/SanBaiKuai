@@ -30,6 +30,7 @@ public class playerController : MonoBehaviour {
 	private bool canBreak = false;
 	private bool isGhost = false; 
 	private bool isTeleport = false;
+	private bool onCoolDown = false;
 
 	private GameObject wallToBeak;
 	private GameObject newTeleportLocation;
@@ -83,12 +84,21 @@ public class playerController : MonoBehaviour {
 			}
 				
 			if (Input.GetKeyDown (KeyCode.E)) {
-				executeAbility ();
+				if (onCoolDown) {
+					gm.displayMessage ("Ability on cooldown");
+				} else {
+					executeAbility ();
+					StartCoroutine (CoolDown ());
+				}
 			}
 
 			if (Input.GetKeyDown (KeyCode.LeftShift)) {
-				if (gm.numShiftsLeft > 0) {
+				if ((gm.numShiftsLeft > 0) && !onCoolDown) {
 					enterSelection ();
+				} else if (gm.numShiftsLeft <= 0) {
+					gm.displayMessage ("You do not have enough shifts left to change your abilities.");
+				} else {
+					gm.displayMessage ("Ability cannot be swapped while on cooldown");
 				}
 			}
 
@@ -103,6 +113,7 @@ public class playerController : MonoBehaviour {
 		anim.SetBool("Walking", false);
 		clearAllActivities ();
 		if (isShrunk || isGhost) {
+			gm.SendMessage ("Ability cannot be swapped while active.");
 			return;
 		}
 		isSelecting = true;
@@ -181,6 +192,7 @@ public class playerController : MonoBehaviour {
 			this.enabled = false;
 		}
 		if (other.gameObject.CompareTag("Finish")){
+			anim.SetBool("Walking", false);
 			hasWon = true;
 			other.gameObject.GetComponent<Animator> ().SetTrigger ("Touched");
 			this.enabled = false;
@@ -209,6 +221,12 @@ public class playerController : MonoBehaviour {
 			//throwReady = false;
 		}
 			
+	}
+
+	IEnumerator CoolDown() {
+		onCoolDown = true;
+		yield return new WaitForSeconds(5f);
+		onCoolDown = false;
 	}
 
 	IEnumerator GhostMode() {

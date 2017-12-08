@@ -10,11 +10,13 @@ public class SetText : MonoBehaviour {
     public string textToSet;
 
     private Text text;
+	private String message;
     private GameManager gm;
     private playerController pc;
 
 	// Use this for initialization
 	void Start () {
+		message = "";
         try {
             if (GameObject.FindGameObjectWithTag("GameController")) {
                 gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
@@ -45,9 +47,42 @@ public class SetText : MonoBehaviour {
             case "Ability":
                 text.text = "Current ability: " + pc.currAbility;
                 break;
+			case "Message":
+				text.text = message;
+				break;
             default:
                 text.text = "wrong string";
                 break;
         }
 	}
+
+	public void sendMessage(String notification) {
+		StartCoroutine (DisplayMessage (notification));
+	}
+
+	IEnumerator DisplayMessage(String notification) {
+		message = notification;
+		text.color = new Color (255f, 255f, 0f);
+		yield return new WaitForSeconds(0.2f);
+		text.color = new Color (255f, 255f, 255f);
+		yield return new WaitForSeconds(0.2f);
+		text.color = new Color (255f, 255f, 0f);
+		yield return new WaitForSeconds(0.2f);
+		text.color = new Color (255f, 255f, 255f);
+		yield return new WaitForSeconds(0.2f);
+		text.color = new Color (255f, 255f, 0f);
+		yield return new WaitForSeconds(0.2f);
+		text.color = new Color (255f, 255f, 255f);
+		yield return new WaitForSeconds(0.2f);
+		text.color = new Color (255f, 255f, 0f);
+		yield return new WaitForSeconds(0.2f);
+		text.color = new Color (255f, 255f, 255f);
+		yield return new WaitForSeconds(0.2f);
+		text.color = new Color (255f, 255f, 0f);
+		yield return new WaitForSeconds(0.2f);
+		text.color = new Color (255f, 255f, 255f);
+		yield return new WaitForSeconds(0.2f);
+		message = "";
+	}
+		
 }

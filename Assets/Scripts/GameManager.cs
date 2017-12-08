@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviour {
         //update numShiftsLeft with player shifts
 	}
 
+	public void displayMessage(string message) {
+		canvas.GetComponentsInChildren<SetText> ()[1].sendMessage (message);
+	}
+
     IEnumerator PlayGameOver() {
         music[0].Stop();
         music[1].Play();
