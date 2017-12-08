@@ -47,6 +47,16 @@ public class SetText : MonoBehaviour {
 		StartCoroutine (DisplayMessage (notification));
 	}
 
+	public void sendNotification(String notification) {
+		StartCoroutine (DisplayNotification (notification));
+	}
+
+	IEnumerator DisplayNotification(String notification) {
+		message = notification;
+		yield return new WaitForSeconds (4f);
+		message = "";
+	}
+
 	IEnumerator DisplayMessage(String notification) {
 		message = notification;
 		text.color = new Color (255f, 255f, 0f);
