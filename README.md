@@ -6,6 +6,8 @@
 * To pause the game: `p`
 * To escape from the current mode: `Esc`
 * Toggling in Shrink mode: `e`
+* Opening the ability menu/choosing different abilities: `Shift`
+* Iterate through the ability list: `a` - to iterate backwards, `d` - to iterate forward
 
 ## About ShiftyBoi
 Goal: Shift yourself from the starting point to the door on the right.
