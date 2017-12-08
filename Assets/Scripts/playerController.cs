@@ -121,6 +121,7 @@ public class playerController : MonoBehaviour {
 			gm.displayMessage ("Ability cannot be swapped while active.");
 			return;
 		}
+		gm.displayNotification ("Press Shift again to swap abilities or press Esc to cancel.");
 		isSelecting = true;
 		//create shift ability prefab
 		selector = Instantiate(selectionPrefab);
@@ -166,6 +167,7 @@ public class playerController : MonoBehaviour {
 			}
 		} else if (currAbility == Abilities.teleport) {
 			if (!isTeleport) {
+				gm.displayNotification ("Press E again to teleport to target location or press Esc to cancel.");
 				newTeleportLocation = Instantiate (teleportPrefab);
 				newTeleportLocation.transform.rotation = this.transform.rotation;
 				newTeleportLocation.transform.position = teleportPoint.transform.position;
@@ -208,6 +210,7 @@ public class playerController : MonoBehaviour {
             }
             isColliding = true;
             Destroy(other.gameObject);
+			gm.displayNotification ("You found a Piece of Shift!\n +2 Shifts");
             gm.numShiftsLeft += 2;
         }
 		if (other.gameObject.CompareTag("Finish")){
