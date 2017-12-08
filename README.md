@@ -12,15 +12,18 @@ Avoid the ShiftMuncher and collect as many Shifts as possible before entering th
 
 ## About team PieceOfShift
 ### Team members
-Shift 1: Khoo Wei Ping
-Shift 2: Kyle Timothy Ng Chu
-Shift 3: Jelena Neo Hui Ling
+Shift 1: *Khoo Wei Ping*
 
-Together... we form a *PieceOfShift*
+Shift 2: *Kyle Timothy Ng Chu*
+
+Shift 3: *Jelena Neo Hui Ling*
+
+Together... we form a **PieceOfShift**
 
 ## Game source
 Our game is built using Unity.
-Game characters are from [Dumbanex.com](Dumbanex.com)
+
+Game characters are from [Dumbanex.com](http://www.dumbmanex.com/bynd_freestuff.html)
 
 ## Game build
 Our game will be in the executable file format (.exe).
