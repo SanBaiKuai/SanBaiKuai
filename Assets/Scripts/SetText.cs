@@ -43,6 +43,13 @@ public class SetText : MonoBehaviour {
         }
 	}
 
+	public void sendInstruction(String notification) {
+		message = notification;
+	}
+	public void clearMessage(){
+		message = "";
+	}
+
 	public void sendMessage(String notification) {
 		StartCoroutine (DisplayMessage (notification));
 	}

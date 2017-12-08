@@ -46,6 +46,14 @@ public class GameManager : MonoBehaviour {
 		canvas.GetComponentsInChildren<SetText> ()[1].sendNotification (message);
 	}
 
+	public void displayInstruction(string message) {
+		canvas.GetComponentsInChildren<SetText> ()[1].sendInstruction (message);
+	}
+
+	public void clearMessage(){
+		canvas.GetComponentsInChildren<SetText> ()[1].clearMessage();
+	}
+
     IEnumerator PlayGameOver() {
         music[0].Stop();
         music[1].Play();
