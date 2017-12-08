@@ -33,6 +33,7 @@ public class playerController : MonoBehaviour {
 	private bool isGhost = false; 
 	private bool isTeleport = false;
 	private bool onCoolDown = false;
+    private bool isColliding = false;
 
 	private bool ghostOnCoolDown = false;
 	private bool jumpOnCoolDown = false;
@@ -59,6 +60,7 @@ public class playerController : MonoBehaviour {
 	void Update () {
 		direction = this.transform.localScale;
 		Vector2 velo = rb2d.velocity;
+        isColliding = false;
 		if(!isSelecting) {
 			//left-right movements
 			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
@@ -201,6 +203,14 @@ public class playerController : MonoBehaviour {
 			anim.Play ("Player_Dying");
 			this.enabled = false;
 		}
+        if (other.gameObject.CompareTag("PieceOfShift")) {
+            if (isColliding) {
+                return;
+            }
+            isColliding = true;
+            Destroy(other.gameObject);
+            gm.numShiftsLeft += 2;
+        }
 		if (other.gameObject.CompareTag("Finish")){
 			anim.SetBool("Walking", false);
 			hasWon = true;
