@@ -14,14 +14,24 @@ public class SetText : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        pc = gm.player.GetComponent<playerController>();
-        text = GetComponent<Text>();
+        try {
+            gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+            if (gm != null) {
+                pc = gm.player.GetComponent<playerController>();
+            }
+        }
+        finally {
+            text = GetComponent<Text>();
+        }
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		switch (textToSet) {
+            case "StageSelect":
+                text.text = Statics.stageNumber.ToString();
+                break;
             case "Stage":
                 text.text = SceneManager.GetActiveScene().name;
                 break;
