@@ -8,7 +8,7 @@ public class playerController : MonoBehaviour {
 	public float jump = 250;
 	public float superJump = 800;
 
-	private enum Abilities {superJump, shrink, wallBreak, ghostWalk};
+	private enum Abilities {superJump, shrink, wallBreak, ghostWalk, teleport};
 
 	private Rigidbody2D rb2d;
 	private Vector3 direction;
@@ -19,13 +19,14 @@ public class playerController : MonoBehaviour {
 	private bool isShrunk = false;
 	private bool canBreak = false;
 	private bool isGhost = false; 
+	private bool isTeleport = false;
 
 	private GameObject wallToBeak;
 
 	// Use this for initialization
 	void Start () {
 		rb2d = this.GetComponent<Rigidbody2D> ();
-		currAbility = Abilities.ghostWalk;
+		currAbility = Abilities.superJump;
 	}
 	
 	// Update is called once per frame
@@ -63,8 +64,11 @@ public class playerController : MonoBehaviour {
 			//anim.SetBool("Walking", false);
 		}
 			
-		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+		if (Input.GetKeyDown (KeyCode.E)) {
 			executeAbility ();
+		}
+
+		if (Input.GetKeyDown (KeyCode.LeftShift)) {
 		}
 		
 	}
