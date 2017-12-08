@@ -25,8 +25,6 @@ public class playerController : MonoBehaviour {
 
 	public Abilities currAbility;
 
-	private int coolDown = 5;
-
 	private bool onGround = false;
 	private bool isShrunk = false;
 	private bool canBreak = false;
@@ -34,12 +32,6 @@ public class playerController : MonoBehaviour {
 	private bool isTeleport = false;
 	private bool onCoolDown = false;
     private bool isColliding = false;
-
-	private bool ghostOnCoolDown = false;
-	private bool jumpOnCoolDown = false;
-	private bool teleportOnCoolDown = false;
-	private bool shrinkOnCoolDown = false;
-	private bool wallBreakOnCoolDown = false;
 
 	private GameObject wallToBeak;
 	private GameObject newTeleportLocation;
@@ -98,7 +90,7 @@ public class playerController : MonoBehaviour {
 					gm.displayMessage ("Ability on cooldown");
 				} else {
 					executeAbility ();
-					if (!isTeleport) {
+					if (!isTeleport && !isShrunk && !isGhost) {
 						StartCoroutine (CoolDown ());
 					}
 				}
@@ -125,7 +117,7 @@ public class playerController : MonoBehaviour {
 		anim.SetBool("Walking", false);
 		clearAllActivities ();
 		if (isShrunk || isGhost) {
-			gm.SendMessage ("Ability cannot be swapped while active.");
+			gm.displayMessage ("Ability cannot be swapped while active.");
 			return;
 		}
 		isSelecting = true;
@@ -165,6 +157,8 @@ public class playerController : MonoBehaviour {
 		} else if (currAbility == Abilities.ghostWalk) {
 			if (!isGhost) {
 				StartCoroutine (GhostMode ());
+			} else {
+				gm.displayMessage ("Ability is already active");
 			}
 		} else if (currAbility == Abilities.teleport) {
 			if (!isTeleport) {
@@ -245,49 +239,10 @@ public class playerController : MonoBehaviour {
 
 	IEnumerator CoolDown() {
 		onCoolDown = true;
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(2f);
 		onCoolDown = false;
 	}
-
-	IEnumerator jumpCoolDown() {
-		jumpOnCoolDown = true;
-		int timeLeft = coolDown;
-		while (timeLeft > 0) {
-			yield return new WaitForSeconds(1f);
-			timeLeft--;
-		}
-		jumpOnCoolDown = false;
-	}
-
-	IEnumerator teleportCoolDown() {
-		teleportOnCoolDown = true;
-		int timeLeft = coolDown;
-		while (timeLeft > 0) {
-			yield return new WaitForSeconds(1f);
-			timeLeft--;
-		}
-		teleportOnCoolDown = false;
-	}
-
-	IEnumerator wallBreakCoolDown() {
-		wallBreakOnCoolDown = true;
-		int timeLeft = coolDown;
-		while (timeLeft > 0) {
-			yield return new WaitForSeconds(1f);
-			timeLeft--;
-		}
-		wallBreakOnCoolDown = false;
-	}
-
-	IEnumerator ghostCoolDown() {
-		ghostOnCoolDown = true;
-		int timeLeft = coolDown;
-		while (timeLeft > 0) {
-			yield return new WaitForSeconds(1f);
-			timeLeft--;
-		}
-		ghostOnCoolDown = false;
-	}
+		
 
 	IEnumerator GhostMode() {
 		Color color = this.gameObject.GetComponent<Renderer> ().material.color;
@@ -321,6 +276,7 @@ public class playerController : MonoBehaviour {
 		//cooldown
 		//yield return new WaitForSeconds (3f);
 		isGhost = false;
+		StartCoroutine (CoolDown ());
 	}
 }
 
