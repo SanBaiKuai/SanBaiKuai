@@ -132,6 +132,15 @@ public class playerController : MonoBehaviour {
 			anim.Play ("Player_Dying");
 		}
 	}
+
+	void OnTriggerStay2D(Collider2D other) {
+		if (other.gameObject.CompareTag("floor")){
+			//print(onGround);
+			onGround = true;
+			anim.SetBool("Contact", true);
+		}
+	}
+		
 	void OnTriggerExit2D(Collider2D other){
 		if (other.gameObject.CompareTag("floor")){
 			//print(onGround);
