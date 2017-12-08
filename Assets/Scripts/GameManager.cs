@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public int numShiftsLeft = 5;
 
     private AudioSource[] music;
+	private bool alrDead = false;
 
 	// Use this for initialization
 	void Start () {
@@ -19,10 +20,11 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //if (player.isDead) {
-        //PlayGameOver();
+		if (player.GetComponent<playerController>().isDead && !alrDead) {
+			alrDead = true;
+			StartCoroutine(PlayGameOver());
         //Reload();
-        //}
+        }
 
         //update numShiftsLeft with player shifts
 	}

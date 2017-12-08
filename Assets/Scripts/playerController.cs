@@ -9,6 +9,7 @@ public class playerController : MonoBehaviour {
 	public float superJump = 800;
 
 	public bool isSelecting = false;
+	public bool isDead = false;
 
 	public GameObject teleportPrefab;
 	public GameObject selectionPrefab;
@@ -168,6 +169,7 @@ public class playerController : MonoBehaviour {
 			wallToBeak = other.gameObject;
 		}
 		if (other.gameObject.CompareTag ("KillOnContact") && !isGhost) {
+			isDead = true;
 			anim.Play ("Player_Dying");
 			this.enabled = false;
 		}
@@ -225,7 +227,7 @@ public class playerController : MonoBehaviour {
 			}
 		}
 		//cooldown
-		yield return new WaitForSeconds (3f);
+		//yield return new WaitForSeconds (3f);
 		isGhost = false;
 	}
 }
