@@ -47,7 +47,7 @@ public class playerController : MonoBehaviour {
 		Vector2 velo = rb2d.velocity;
 		if(!isSelecting) {
 			//left-right movements
-			if (Input.GetKey(KeyCode.W))
+			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 			{ if (onGround) {
 					velo.y = jump * Time.deltaTime;
 					rb2d.velocity = velo;
@@ -169,6 +169,7 @@ public class playerController : MonoBehaviour {
 		}
 		if (other.gameObject.CompareTag ("KillOnContact")) {
 			anim.Play ("Player_Dying");
+			this.enabled = false;
 		}
 	}
 
