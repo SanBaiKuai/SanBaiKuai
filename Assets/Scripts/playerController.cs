@@ -8,6 +8,9 @@ public class playerController : MonoBehaviour {
 	public float jump = 250;
 	public float superJump = 800;
 
+	public GameObject teleportPrefab;
+	public GameObject teleportPoint;
+
 	public enum Abilities {superJump, shrink, wallBreak, ghostWalk, teleport};
 
 	private Rigidbody2D rb2d;
@@ -22,11 +25,12 @@ public class playerController : MonoBehaviour {
 	private bool isTeleport = false;
 
 	private GameObject wallToBeak;
+	private GameObject newTeleportLocation;
 
 	// Use this for initialization
 	void Start () {
 		rb2d = this.GetComponent<Rigidbody2D> ();
-		currAbility = Abilities.superJump;
+		currAbility = Abilities.teleport;
 	}
 	
 	// Update is called once per frame
@@ -95,8 +99,19 @@ public class playerController : MonoBehaviour {
 			}
 		} else if (currAbility == Abilities.ghostWalk) {
 			if (!isGhost) {
-				StartCoroutine(GhostMode());
+				StartCoroutine (GhostMode ());
 			}
+		} else if (currAbility == Abilities.teleport) {
+			if (!isTeleport) {
+				newTeleportLocation = Instantiate (teleportPrefab);
+				newTeleportLocation.transform.rotation = this.transform.rotation;
+				newTeleportLocation.transform.position = teleportPoint.transform.position;
+				newTeleportLocation.transform.parent = this.transform;
+			} else {
+				GameObject.Destroy (newTeleportLocation);
+				this.transform.position = teleportPoint.transform.position;
+			}
+			isTeleport = !isTeleport;
 		}
 	}
 
