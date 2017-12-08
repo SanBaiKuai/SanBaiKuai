@@ -16,11 +16,15 @@ public class WeakWall : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Wallbreaker") {
-            StartCoroutine(Break());
-        }
-    }
+	public void breakWall(){
+		StartCoroutine(Break());
+	}
+
+//    void OnTriggerEnter2D(Collider2D other) {
+//        if (other.tag == "Wallbreaker") {
+//            StartCoroutine(Break());
+//        }
+//    }
 
     IEnumerator Break() {
         anim.SetTrigger("Break");

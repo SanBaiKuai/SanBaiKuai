@@ -80,5 +80,28 @@ public class playerController : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D other){
+		//print(onGround);
+		if (other.gameObject.CompareTag("floor")){
+			//print(onGround);
+			onGround = true;
+			//anim.SetBool("Contact", true);
+		}
+		if (other.gameObject.CompareTag("Player")){
+			//throwReady = true;
+		}
+	}
+	void OnTriggerExit2D(Collider2D other){
+		if (other.gameObject.CompareTag("floor")){
+			//print(onGround);
+			//anim.SetBool("Contact", false);
+			onGround = false;
+		}
+		if (other.gameObject.CompareTag("Player")){
+			//throwReady = false;
+		}
+
+	}
+
 }
 
