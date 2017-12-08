@@ -8,11 +8,7 @@ public class playerController : MonoBehaviour {
 	public float jump = 250;
 	public float superJump = 800;
 
-<<<<<<< HEAD
-	private enum Abilities {superJump, shrink, wallBreak, ghostWalk, teleport};
-=======
-	public enum Abilities {superJump, shrink, wallBreak, ghostWalk};
->>>>>>> 4b903a8b12db4907819edea455f0714338d26a5d
+	public enum Abilities {superJump, shrink, wallBreak, ghostWalk, teleport};
 
 	private Rigidbody2D rb2d;
 	private Vector3 direction;
