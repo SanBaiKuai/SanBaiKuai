@@ -10,6 +10,7 @@ public class playerController : MonoBehaviour {
 
 	public bool isSelecting = false;
 	public bool isDead = false;
+	public bool hasWon = false;
 
 	public GameObject teleportPrefab;
 	public GameObject selectionPrefab;
@@ -33,13 +34,16 @@ public class playerController : MonoBehaviour {
 	private GameObject wallToBeak;
 	private GameObject newTeleportLocation;
 	private GameObject selector;
+
+	private GameManager gm;
 	Animator anim;
 
 	// Use this for initialization
 	void Start () {
 		rb2d = this.GetComponent<Rigidbody2D> ();
-		currAbility = Abilities.teleport;
+		//currAbility = Abilities.teleport;
 		anim = GetComponent<Animator>();
+		gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -83,7 +87,9 @@ public class playerController : MonoBehaviour {
 			}
 
 			if (Input.GetKeyDown (KeyCode.LeftShift)) {
-				enterSelection ();
+				if (gm.numShiftsLeft > 0) {
+					enterSelection ();
+				}
 			}
 
 			if (Input.GetKeyDown (KeyCode.Escape)) {
@@ -94,6 +100,7 @@ public class playerController : MonoBehaviour {
 	}
 
 	private void enterSelection() {
+		anim.SetBool("Walking", false);
 		clearAllActivities ();
 		if (isShrunk || isGhost) {
 			return;
@@ -173,6 +180,13 @@ public class playerController : MonoBehaviour {
 			anim.Play ("Player_Dying");
 			this.enabled = false;
 		}
+		if (other.gameObject.CompareTag("Finish")){
+			hasWon = true;
+			other.gameObject.GetComponent<Animator> ().SetTrigger ("Touched");
+			this.enabled = false;
+		}
+
+
 	}
 
 	void OnTriggerStay2D(Collider2D other) {

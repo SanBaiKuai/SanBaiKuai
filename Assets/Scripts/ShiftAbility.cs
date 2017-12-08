@@ -12,12 +12,14 @@ public class ShiftAbility : MonoBehaviour {
     private Transform parentTransform;
     private static int numAbilities = 5;
 
+	private GameManager gm;
 	// Use this for initialization
 	void Start () {
         text = GetComponent<TextMesh>();
         pc = GetComponentInParent<playerController>();
         parentTransform = GetComponentInParent<Transform>();
 		tempAbility = pc.currAbility;
+		gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -36,6 +38,9 @@ public class ShiftAbility : MonoBehaviour {
         }
 
 		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+			if (pc.currAbility != tempAbility) {
+				gm.numShiftsLeft--;
+			}
 			exitSelection ();
 			
 		}
