@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class SetText : MonoBehaviour {
 
@@ -15,10 +16,13 @@ public class SetText : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         try {
-            gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-            if (gm != null) {
+            if (GameObject.FindGameObjectWithTag("GameController")) {
+                gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
                 pc = gm.player.GetComponent<playerController>();
             }
+        }
+        catch (Exception e) {
+
         }
         finally {
             text = GetComponent<Text>();
