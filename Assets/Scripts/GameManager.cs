@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject musicManager;
     public GameObject player;
+    public GameObject canvas;
     public int numShiftsLeft = 5;
 
     private AudioSource[] music;
@@ -26,9 +27,23 @@ public class GameManager : MonoBehaviour {
         //update numShiftsLeft with player shifts
 	}
 
-    void PlayGameOver() {
+    IEnumerator PlayGameOver() {
         music[0].Stop();
         music[1].Play();
+        canvas.GetComponent<Animator>().SetTrigger("PlayerDead");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    IEnumerator PlayClear() {
+        music[0].Stop();
+        music[2].Play();
+        canvas.GetComponent<Animator>().SetTrigger("StageClear");
+        yield return new WaitForSeconds(1.5f);
+        PlayerPrefs.SetInt("lastClearedStage", Statics.stageNumber);
+        Statics.updateLastClearedStage();
+        Statics.stageNumber++;
+        SceneManager.LoadScene("Stage " + Statics.stageNumber);
     }
 
     void Reload() {
