@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		numShiftsLeft = startingShifts;
         music = musicManager.GetComponentsInChildren<AudioSource>();
-	}
+        Statics.stageNumber = int.Parse(SceneManager.GetActiveScene().name.Substring(6));
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -53,14 +54,12 @@ public class GameManager : MonoBehaviour {
         music[0].Stop();
         music[2].Play();
         canvas.GetComponent<Animator>().SetTrigger("StageClear");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
         PlayerPrefs.SetInt("lastClearedStage", Statics.stageNumber);
         Statics.updateLastClearedStage();
         Statics.stageNumber++;
         SceneManager.LoadScene("Stage " + Statics.stageNumber);
-    }
-
-    void Reload() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("Credits");
     }
 }
