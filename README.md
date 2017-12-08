@@ -1,9 +1,11 @@
-# ShiftyBoi
+# ShiftyBoi ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/shiftyboi_for_github.png "ShiftyBoi")
+
 
 ## Controls used in the game
 * To move the character around: `up`/`w`, `down`/`s`, `left`/`a`, `right`/`d`
 * To pause the game: `p`
 * To escape from the current mode: `Esc`
+* Toggling in Shrink mode: `e`
 
 ## About ShiftyBoi
 Goal: Shift yourself from the starting point to the door on the right.
