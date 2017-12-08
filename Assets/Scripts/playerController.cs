@@ -6,24 +6,26 @@ public class playerController : MonoBehaviour {
 
 	public float speed = 100;
 	public float jump = 250;
-	public float superJump = 8000;
+	public float superJump = 800;
 
 	private enum Abilities {superJump, shrink, wallBreak, ghostWalk};
 
 	private Rigidbody2D rb2d;
 	private Vector3 direction;
-	private bool onGround = false;
+
 	private Abilities currAbility;
 
+	private bool onGround = false;
 	private bool isShrunk = false;
-
 	private bool canBreak = false;
+	private bool isGhost = false; 
+
 	private GameObject wallToBeak;
 
 	// Use this for initialization
 	void Start () {
 		rb2d = this.GetComponent<Rigidbody2D> ();
-		currAbility = Abilities.wallBreak;
+		currAbility = Abilities.ghostWalk;
 	}
 	
 	// Update is called once per frame
@@ -87,6 +89,10 @@ public class playerController : MonoBehaviour {
 				canBreak = false;
 				wallToBeak = null;
 			}
+		} else if (currAbility == Abilities.ghostWalk) {
+			if (!isGhost) {
+				StartCoroutine(GhostMode());
+			}
 		}
 	}
 
@@ -115,5 +121,21 @@ public class playerController : MonoBehaviour {
 		}
 	}
 
+	IEnumerator GhostMode() {
+		isGhost = true;
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("KillOnContact");
+		foreach (GameObject enemy in enemies) {
+			enemy.GetComponent<Collider2D> ().enabled = false;
+		}
+		//this.gameObject.GetComponent<Renderer> ().material.color.a = 0.5f;
+		yield return new WaitForSeconds(5f);
+		//this.gameObject.GetComponent<Renderer> ().material.color.a = 1.0f;
+		foreach (GameObject enemy in enemies) {
+			enemy.GetComponent<Collider2D> ().enabled = true;
+		}		
+		//cooldown
+		yield return new WaitForSeconds (3f);
+		isGhost = false;
+	}
 }
 
