@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour {
 	}
 
     IEnumerator Movement() {
-        while (true) {
+        while (!isDead) {
             yield return new WaitForSeconds(1f);
             rb2D.velocity = new Vector2(speed * -1f, 0);
             yield return new WaitForSeconds(1f);
