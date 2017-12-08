@@ -12,14 +12,18 @@ public class playerController : MonoBehaviour {
 
 	private Rigidbody2D rb2d;
 	private Vector3 direction;
-	private bool onGround = true;
+	private bool onGround = false;
 	private Abilities currAbility;
+
 	private bool isShrunk = false;
+
+	private bool canBreak = false;
+	private GameObject wallToBeak;
 
 	// Use this for initialization
 	void Start () {
 		rb2d = this.GetComponent<Rigidbody2D> ();
-		currAbility = Abilities.shrink;
+		currAbility = Abilities.wallBreak;
 	}
 	
 	// Update is called once per frame
@@ -77,6 +81,37 @@ public class playerController : MonoBehaviour {
 				this.gameObject.transform.localScale = new Vector3 (1f, 1f, 1f);
 			}
 			isShrunk = !isShrunk;
+		} else if (currAbility == Abilities.wallBreak) {
+			if (canBreak) {
+				wallToBeak.GetComponent<WeakWall> ().breakWall ();
+				canBreak = false;
+				wallToBeak = null;
+			}
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		//print(onGround);
+		if (other.gameObject.CompareTag("floor")){
+			//print(onGround);
+			onGround = true;
+			//anim.SetBool("Contact", true);
+		}
+		if (other.gameObject.CompareTag("WeakWall")){
+			canBreak = true;
+			wallToBeak = other.gameObject;
+		}
+	}
+	void OnTriggerExit2D(Collider2D other){
+		if (other.gameObject.CompareTag("floor")){
+			//print(onGround);
+			//anim.SetBool("Contact", false);
+			onGround = false;
+		}
+		if (other.gameObject.CompareTag("WeakWall")){
+			canBreak = false;
+			wallToBeak = null;
+			//throwReady = false;
 		}
 	}
 
