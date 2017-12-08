@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject musicManager;
     public GameObject player;
+    public int numShiftsLeft = 5;
 
     private AudioSource[] music;
 
@@ -17,11 +18,20 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//if (player.isDead) {
-            music[0].Stop();
-            music[1].Play();
-        // reload current scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //if (player.isDead) {
+        //PlayGameOver();
+        //Reload();
         //}
+
+        //update numShiftsLeft with player shifts
 	}
+
+    void PlayGameOver() {
+        music[0].Stop();
+        music[1].Play();
+    }
+
+    void Reload() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
