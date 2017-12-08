@@ -10,10 +10,12 @@ public class SetText : MonoBehaviour {
 
     private Text text;
     private GameManager gm;
+    private playerController pc;
 
 	// Use this for initialization
 	void Start () {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        pc = gm.player.GetComponent<playerController>();
         text = GetComponent<Text>();
 	}
 	
@@ -25,6 +27,9 @@ public class SetText : MonoBehaviour {
                 break;
             case "Shifts":
                 text.text = "Shifts left: " + gm.numShiftsLeft.ToString();
+                break;
+            case "Ability":
+                text.text = "Current ability: " + pc.currAbility;
                 break;
             default:
                 text.text = "wrong string";
