@@ -26,11 +26,13 @@ public class playerController : MonoBehaviour {
 
 	private GameObject wallToBeak;
 	private GameObject newTeleportLocation;
+	Animator anim;
 
 	// Use this for initialization
 	void Start () {
 		rb2d = this.GetComponent<Rigidbody2D> ();
 		currAbility = Abilities.teleport;
+		anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -48,7 +50,7 @@ public class playerController : MonoBehaviour {
 		{
 			velo.x = speed*Time.deltaTime;
 			rb2d.velocity = velo;
-			//anim.SetBool("Walking", true);
+			anim.SetBool("Walking", true);
 			direction.x = Mathf.Abs(direction.x);
 			this.transform.localScale = direction;
 
@@ -58,14 +60,14 @@ public class playerController : MonoBehaviour {
 		{
 			velo.x = -speed * Time.deltaTime;
 			rb2d.velocity = velo;
-			//anim.SetBool("Walking", true);
+			anim.SetBool("Walking", true);
 			direction.x = -Mathf.Abs(direction.x);
 			this.transform.localScale = direction;
 
 		}
 		if (Input.GetAxis("Horizontal") == 0)
 		{
-			//anim.SetBool("Walking", false);
+			anim.SetBool("Walking", false);
 		}
 			
 		if (Input.GetKeyDown (KeyCode.E)) {
@@ -120,17 +122,20 @@ public class playerController : MonoBehaviour {
 		if (other.gameObject.CompareTag("floor")){
 			//print(onGround);
 			onGround = true;
-			//anim.SetBool("Contact", true);
+			anim.SetBool("Contact", true);
 		}
 		if (other.gameObject.CompareTag("WeakWall")){
 			canBreak = true;
 			wallToBeak = other.gameObject;
 		}
+		if (other.gameObject.CompareTag ("KillOnContact")) {
+			anim.Play ("Player_Dying");
+		}
 	}
 	void OnTriggerExit2D(Collider2D other){
 		if (other.gameObject.CompareTag("floor")){
 			//print(onGround);
-			//anim.SetBool("Contact", false);
+			anim.SetBool("Contact", false);
 			onGround = false;
 		}
 		if (other.gameObject.CompareTag("WeakWall")){
@@ -138,6 +143,7 @@ public class playerController : MonoBehaviour {
 			wallToBeak = null;
 			//throwReady = false;
 		}
+			
 	}
 
 	IEnumerator GhostMode() {
