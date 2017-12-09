@@ -149,7 +149,7 @@ public class playerController : MonoBehaviour {
 				abilityDisplay.setActive ();
 				this.gameObject.transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
 			} else {
-				this.gameObject.transform.localScale = new Vector3 (1f, 1f, 1f);
+				this.gameObject.transform.localScale = new Vector3 (2f, 2f, 2f);
 				StartCoroutine (CoolDown ());
 			}
 			isShrunk = !isShrunk;
