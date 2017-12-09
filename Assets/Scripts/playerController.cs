@@ -173,6 +173,10 @@ public class playerController : MonoBehaviour {
 				newTeleportLocation.transform.position = teleportPoint.transform.position;
 				newTeleportLocation.transform.parent = this.transform;
 			} else {
+				if (!newTeleportLocation.GetComponent<teleportController> ().canTeleport) {
+					gm.displayMessage ("You cannot teleport there");
+					return;
+				} 
 				GameObject.Destroy (newTeleportLocation);
 				this.transform.position = teleportPoint.transform.position;
 				StartCoroutine (CoolDown ());
