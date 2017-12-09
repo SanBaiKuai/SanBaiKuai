@@ -17,19 +17,19 @@ public class cameraController : MonoBehaviour {
 	private GameManager gm;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		player = GameObject.Find ("Player");
 		player.GetComponent<playerController> ().enabled = false;
 		playerTransform = GameObject.Find ("Player").transform;
 		gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-		gm.displayInstruction ("You are now in planning mode, use arrow keys or wasd to take a look at the map.\nPress Esc when you are done.");
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (isPlanning) {
-			if (Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.RightArrow)) {
+            gm.displayInstruction("You are now in planning mode, use arrow keys or wasd to take a look at the map.\nPress Esc when you are done.");
+            if (Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.RightArrow)) {
 				transform.position = new Vector3 (Mathf.Clamp (transform.position.x + (speed*Time.deltaTime), xMin, xMax), transform.position.y, transform.position.z);
 			}
 

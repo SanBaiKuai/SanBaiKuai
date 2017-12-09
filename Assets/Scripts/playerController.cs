@@ -44,7 +44,7 @@ public class playerController : MonoBehaviour {
 	Animator anim;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		rb2d = this.GetComponent<Rigidbody2D> ();
 		//currAbility = Abilities.teleport;
 		anim = GetComponent<Animator>();
