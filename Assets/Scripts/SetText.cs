@@ -25,6 +25,9 @@ public class SetText : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		switch (textToSet) {
+            case "Volume":
+                text.text = Statics.volume.ToString();
+                break;
             case "Stage":
                 text.text = SceneManager.GetActiveScene().name;
                 break;

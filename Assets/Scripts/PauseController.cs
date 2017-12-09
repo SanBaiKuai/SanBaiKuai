@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PauseController : MonoBehaviour {
+    
+    public AudioMixer master;
 
     private bool isPaused = false;
     private Animator anim;
@@ -22,6 +25,20 @@ public class PauseController : MonoBehaviour {
             }
         }
 	}
+
+    public void Increment() {
+        if (Statics.volume < 10) {
+            Statics.volume++;
+            master.SetFloat("Volume", (Statics.volume - 5) * 2);
+        }
+    }
+
+    public void Decrement() {
+        if (Statics.volume > 1) {
+            Statics.volume--;
+            master.SetFloat("Volume", (Statics.volume - 5) * 2);
+        }
+    }
 
     public void Pause() {
         StartCoroutine(PauseEnum());
