@@ -10,7 +10,7 @@
 * Iterate through the ability list: `a` - to iterate backwards, `d` - to iterate forward
 
 ## About ShiftyBoi
-Goal: Shift yourself from the starting point to the door on the right ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/s_them_pod.png "Door").
+Goal: Shift yourself from the starting point to the door on the right ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/s_them_pod.png =250x250 Door").
 
 Avoid the ShiftMuncher ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/shiftmuncher%20for%20github.png "ShiftMuncher").
 
