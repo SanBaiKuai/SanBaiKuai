@@ -1,5 +1,4 @@
-# ShiftyBoi
-![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/shiftyboi_for_github.png "ShiftyBoi")
+# ShiftyBoi ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/shiftyboi_for_github.png "ShiftyBoi")
 
 
 ## Controls used in the game
