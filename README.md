@@ -10,20 +10,18 @@
 * Iterate through the ability list: `a` - to iterate backwards, `d` - to iterate forward
 
 ## About ShiftyBoi
-Goal: Shift yourself from the starting point to the door on the right <img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/s_them_pod.png" height="24" alt="Door">
-
-![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/s_them_pod.png "Door").
+Goal: Shift yourself from the starting point to the door on the right <img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/s_them_pod.png" height="24" alt="Door">.
 
 Avoid the ShiftMuncher ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/shiftmuncher%20for%20github.png "ShiftMuncher").
 
 There is a limited number of shifts you can use for power-shifting (i.e. switching abilities) in each stage. Collect as many Shiftonites ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/s_bleegaunt_move.png "Shiftonite") as possible to increase the number shifts you can use!
 
 Abilities available:
-* Super jump ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/super_jump.png "Super jump")
-* Teleportation ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/teleport.png "Teleportation")
-* Shrink ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/shrink.png "Shrink")
-* Break walls ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/break_wall.png "Break walls")
-* Ghost form ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/ghost.png "Ghost form")
+* Super jump <img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/super_jump.png" height="24" alt="Super Jump">
+* Teleportation <img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/teleport.png" height="24" alt="Teleportation">
+* Shrink <img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/shrink.png" height="24" alt="Shrink">
+* Break walls <img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/break_wall.png" height="24" alt="Break Walls">
+* Ghost form <img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/ghost.png" height="24" alt="Ghost Form">
 
 ## About team PieceOfShift
 ### Team members
