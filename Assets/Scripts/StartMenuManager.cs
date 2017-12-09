@@ -51,4 +51,8 @@ public class StartMenuManager : MonoBehaviour {
     public void StartGame() {
         SceneManager.LoadScene("Stage " + Statics.stageNumber);
     }
+
+	public void Credits() {
+		SceneManager.LoadScene ("Credits");
+	}
 }
