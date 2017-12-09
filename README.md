@@ -16,7 +16,8 @@ Avoid the ShiftMuncher ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob
 
 There is a limited number of shifts you can use for power-shifting (i.e. switching abilities) in each stage. Collect as many Shiftonites ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/s_bleegaunt_move.png "Shiftonite") as possible to increase the number of shifts you can use!
 
-Abilities available:
+
+**Abilities available:**
 * Super jump <img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/super_jump.png" height="50" alt="Super Jump">
 * Teleportation <img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/teleport.png" height="50" alt="Teleportation">
 * Shrink <img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/shrink.png" height="50" alt="Shrink">
