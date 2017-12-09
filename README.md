@@ -44,8 +44,8 @@ Font used: **Arcade Classic** by **Jakob Fischer**
 Our game will be in the executable file format (.exe).
 
 ## A peek into the game
-<img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/screenshot_0.png" height="150" alt="Start Menu">
+<img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/screenshot_0.jpg" height="150" alt="Start Menu">
 
-<img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/screenshot_1.png" height="150" alt="Game 1">
+<img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/screenshot_1.jpg" height="150" alt="Game 1">
 
-<img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/screenshot_2.png" height="150" alt="Game 2">
+<img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/screenshot_2.jpg" height="150" alt="Game 2">
