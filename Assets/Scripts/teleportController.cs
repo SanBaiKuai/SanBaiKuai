@@ -22,7 +22,7 @@ public class teleportController : MonoBehaviour {
 		canTeleport = false;
 		this.GetComponent<SpriteRenderer> ().color = Color.red;
 		numCollisions++;
-		//Debug.Log (numCollisions);
+		Debug.Log (numCollisions);
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
@@ -31,6 +31,6 @@ public class teleportController : MonoBehaviour {
 			canTeleport = true;
 			this.GetComponent<SpriteRenderer> ().color = Color.white;
 		}
-		//Debug.Log (numCollisions);
+		Debug.Log (numCollisions);
 	}
 }

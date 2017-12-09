@@ -123,7 +123,7 @@ public class playerController : MonoBehaviour {
 			gm.displayMessage ("Ability cannot be swapped while active.");
 			return;
 		}
-		gm.displayNotification ("Press Shift again to swap abilities or press Esc to cancel.");
+		gm.displayNotification ("Press Shift again to select an ability or press Esc to cancel.");
 		isSelecting = true;
 		//create shift ability prefab
 		selector = Instantiate(selectionPrefab);
@@ -221,7 +221,7 @@ public class playerController : MonoBehaviour {
             }
             isColliding = true;
             Destroy(other.gameObject);
-			gm.displayNotification ("You found a Piece of Shift!\n +2 Shifts");
+			gm.displayNotification ("You found a Piece of Shiftonite!\n +2 Shifts");
             gm.numShiftsLeft += 2;
         }
 		if (other.gameObject.CompareTag("Finish")){
