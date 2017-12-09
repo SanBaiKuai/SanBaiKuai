@@ -60,9 +60,11 @@ public class playerController : MonoBehaviour {
 		if(!isSelecting) {
 			//left-right movements
 			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-			{ if (onGround) {
+			{ if (onGround && !isTeleport) {
 					velo.y = jump * Time.deltaTime;
 					rb2d.velocity = velo;
+				} else if (isTeleport) {
+					gm.displayMessage ("Can't jump while in Teleport mode");
 				}
 			}
 			if (Input.GetAxis("Horizontal") > 0)
@@ -166,6 +168,10 @@ public class playerController : MonoBehaviour {
 				gm.displayMessage ("Ability is already active");
 			}
 		} else if (currAbility == Abilities.teleport) {
+			if (!onGround) {
+				gm.displayMessage ("Can't teleport while jumping");
+				return;
+			}
 			if (!isTeleport) {
 				gm.displayNotification ("Press E again to teleport to target location or press Esc to cancel.");
 				newTeleportLocation = Instantiate (teleportPrefab);
