@@ -5,7 +5,7 @@
 * To move the character around: `up`/`w`, `down`/`s`, `left`/`a`, `right`/`d`
 * To pause the game: `p`
 * To escape from the current mode/menu (e.g. ability menu, teleport mode): `Esc`
-* Toggling in Shrink mode: `e`
+* To use ability: `e`
 * Opening the ability menu/choosing different abilities: `Shift`
 * Iterate through the ability list: `a` - to iterate backwards, `d` - to iterate forward
 
