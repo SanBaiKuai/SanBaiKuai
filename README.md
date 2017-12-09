@@ -12,7 +12,7 @@
 ## About ShiftyBoi
 Goal: Shift yourself from the starting point to the door on the right.
 
-Avoid the ShiftMuncher and collect as many Shifts as possible before entering the door.
+Avoid the ShiftMuncher ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/shiftmuncher%20for%20github.png "ShiftMuncher") and collect as many Shifts ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/s_bleegaunt_move.png "Shift") as possible before entering the door.
 
 ## About team PieceOfShift
 ### Team members
@@ -25,9 +25,11 @@ Shift 3: *Jelena Neo Hui Ling*
 Together... we form a **PieceOfShift**
 
 ## Game source
-Our game is built using Unity.
+Our game is built using Unity, Visual Studio and LMMS.
 
 Game characters are from [Dumbanex.com](http://www.dumbmanex.com/bynd_freestuff.html)
+
+Font used: Arcade Classic by Jakob Fischer
 
 ## Game build
 Our game will be in the executable file format (.exe).

@@ -6,7 +6,7 @@ public class playerController : MonoBehaviour {
 
 	public int ghostDuration = 5;
 
-	public float speed = 100;
+	public float speed = 150;
 	public float jump = 250;
 	public float superJump = 800;
 
@@ -210,6 +210,7 @@ public class playerController : MonoBehaviour {
 			wallToBeak = other.gameObject;
 		}
 		if (other.gameObject.CompareTag ("KillOnContact") && !isGhost) {
+			clearAllActivities ();
 			isDead = true;
 			anim.Play ("Player_Dying");
 			this.enabled = false;
