@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class PauseController : MonoBehaviour {
     
@@ -38,6 +39,11 @@ public class PauseController : MonoBehaviour {
             Statics.volume--;
             master.SetFloat("Volume", (Statics.volume - 5) * 2);
         }
+    }
+
+    public void MainMenu() {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void Pause() {
