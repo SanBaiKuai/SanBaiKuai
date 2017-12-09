@@ -14,7 +14,7 @@ Goal: Shift yourself from the starting point to the door on the right <img src="
 
 Avoid the ShiftMuncher ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/shiftmuncher%20for%20github.png "ShiftMuncher").
 
-There is a limited number of shifts you can use for power-shifting (i.e. switching abilities) in each stage. Collect as many Shiftonites ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/s_bleegaunt_move.png "Shiftonite") as possible to increase the number shifts you can use!
+There is a limited number of shifts you can use for power-shifting (i.e. switching abilities) in each stage. Collect as many Shiftonites ![alt text](https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/s_bleegaunt_move.png "Shiftonite") as possible to increase the number of shifts you can use!
 
 Abilities available:
 * Super jump <img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/super_jump.png" height="50" alt="Super Jump">
@@ -44,4 +44,8 @@ Font used: **Arcade Classic** by **Jakob Fischer**
 Our game will be in the executable file format (.exe).
 
 ## A peek into the game
--insert screenshots-
+<img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/screenshot_0.png" height="150" alt="Start Menu">
+
+<img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/screenshot_1.png" height="150" alt="Game 1">
+
+<img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/screenshot_2.png" height="150" alt="Game 2">
