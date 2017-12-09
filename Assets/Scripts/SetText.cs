@@ -29,7 +29,7 @@ public class SetText : MonoBehaviour {
                 text.text = SceneManager.GetActiveScene().name;
                 break;
             case "Shifts":
-                text.text = "Shifts left: " + gm.numShiftsLeft.ToString();
+                text.text = "Shifts    left: " + gm.numShiftsLeft.ToString();
                 break;
             case "Ability":
                 text.text = "Current ability: " + pc.currAbility;
