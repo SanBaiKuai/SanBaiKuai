@@ -7,7 +7,7 @@ public class StartMenuManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        Statics.stageNumber = Mathf.Min(Statics.lastClearedStage + 1, 4);
 	}
 	
 	// Update is called once per frame
