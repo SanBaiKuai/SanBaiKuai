@@ -42,7 +42,7 @@ Game characters are from **[Dumbanex.com](http://www.dumbmanex.com/bynd_freestuf
 Font used: **Arcade Classic** by **Jakob Fischer**
 
 ## Game build
-Our game will be in the executable file format (.exe).
+Download the latest build **[here](https://github.com/SanBaiKuai/SanBaiKuai/releases)** or from **[itch.io](https://khooroko.itch.io/shiftyboi)**
 
 ## A peek into the game
 <img src="https://github.com/SanBaiKuai/SanBaiKuai/blob/master/Assets/Sprites/screenshot%200.jpg" height="250" alt="Start Menu">
