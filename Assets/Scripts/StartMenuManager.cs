@@ -27,7 +27,7 @@ public class StartMenuManager : MonoBehaviour {
     }
 
     public void Increment() {
-        if (Statics.stageNumber < Statics.lastClearedStage) {
+        if (Statics.stageNumber < Statics.lastClearedStage + 1) {
             Statics.stageNumber++;
         }
     }
